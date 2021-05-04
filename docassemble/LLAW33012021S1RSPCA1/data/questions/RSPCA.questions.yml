@@ -1,0 +1,52 @@
+#this is where we will store the disclaimer message and all the questions that need to be asked
+---
+question: ""
+subquestion: |
+  Welcome to RSPCA Court Summons App. This app does .....
+  
+  ***Disclaimer:***
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+
+  Do you accept these terms?
+yesno: RSPCAeligible
+---
+#next we will gather information about the defendant
+question: |
+  Defendant Details:
+fields:
+  - Full Name: def_name
+  - DOB: def_DOB
+    datatype: date
+  - Street: def_street
+  - Suburb: def_suburb
+  - State: def_state
+  - Postcode: def_postcode
+    datatype: integer
+  - Email: def_email
+  - Phone Number: def_phone
+    datatype: integer
+  - Licence Number: def_licence
+---
+#registery lists 
+question: |
+  Please select registry:
+fields:
+  - no label: RSPCAcourt
+    datatype: integer
+    choices:
+      - "Adelaide": 0
+      - "Port Adelaide": 1
+      - "Christies": 2
+---
+#form type
+question: |
+  Select form type:
+fields:
+  - no label: RSPCAform
+    datatype: radio
+    choices:
+      - "Form 2": formTwo
+      - "Form 3": formThree
+---
+#add any other questions under here
+---
