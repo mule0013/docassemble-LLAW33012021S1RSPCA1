@@ -1,0 +1,23 @@
+#this will be where we can store all the details of the different registries
+---
+variable name: RSPCA_registrieslist
+use objects: true
+data:
+  - registry: Adelaide Magistrates Court
+    address: 260-280 Vitoria Square Adelaide, South Australia, 5000
+    email: AMCregistry@courts.sa.gov.au
+    phone: +61 8 8204 2444 
+    website: http://www.courts.sa.gov.au/GoingtoCourt/CourtLocations/CityCourts/Pages/Adelaide-Magistrates-Court.aspx
+  - registry: Port Adelaide Magistrates Court
+    address: 260 St. Vincent Street, Port Adelaide, South Australia, 5015
+    email: portadelaide@courts.sa.gov.au
+    phone: +61 8 8204 2444 
+    website: http://www.courts.sa.gov.au/GoingtoCourt/CourtLocations/SuburbanCourts/Pages/Port-Adelaide-Magistrates-Court.aspx
+  - registry: Christies Beach Magistrates Court
+    address: 96 Dyson Road, Christies Beach, South Australia, 5165
+    email: christiesbeach@courts.sa.gov.au
+    phone: +61 8 8204 2444 
+    website: http://www.courts.sa.gov.au/GoingtoCourt/CourtLocations/SuburbanCourts/Pages/Christies-Beach-Magistrates-Court.aspx
+---
+#add variable in for RSPCA (informant details)
+---

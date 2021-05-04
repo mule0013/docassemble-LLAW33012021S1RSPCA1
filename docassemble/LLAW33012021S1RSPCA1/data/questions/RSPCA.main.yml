@@ -1,0 +1,112 @@
+# Main file for the RSPCA document automation App
+---
+metadata: 
+  title: |
+    RSPCA Court Summons Prototype
+  short title: |
+      Summons Automation
+  organisation: Flinders University
+  show login: True
+---
+default screen parts:
+  post: |
+    <div style="display: flex; height: 200px; align-items: flex-end; flex-direction: row-reverse">
+    <div style="margin: 5px"><img src="https://staff.flinders.edu.au/etc.clientlibs/flinders/clientlibs/clientlib-site/resources/images/flinderuni_main_logo_black.png" height="40">
+    </div>
+    <div style="margin: 5px; text-align: right">
+    <cite><small><i>
+    Developed by Flinders University in collaboration with RSPCA
+    </i></small></cite>
+    </div>
+    </div>
+---
+#add files that we need to include (questions, registry lists etc.)
+include:
+  - RSPCA.questions.yml
+  - RSPCA.registries.yml
+  #- RSPCA.display_output.yml
+---
+#objects that we need e.g endpoints and logos (can add this later)
+objects:
+  #- placeholder.registries
+  #- placeholder.RSPCA_logo
+  - endpoints: DADict
+---
+#css file (can add this later)
+features:
+  css: X2.01.SACAT.css
+  debug: True
+  hide standard menu: False
+---
+##come back to this later and add in a logo to be displayed on all pages
+---
+#driver code (create the endpoints to test elgibility
+mandatory: True
+code: |
+  ###Can only be two options so only need two endpoints
+  if RSPCAeligible:
+    #set the endpoint to the final screen we want to display
+    endpoints['final_screen']
+  else:
+     #not eligbile so show ineligible screen
+    endpoints['ineligible']
+---
+event: endpoints['final_screen']
+question: ""
+subquestion: |
+  ### This is the final endpoint screen
+  
+  This screen will display the information that had been entered
+  
+  This screen will also display options to save the document as docx/pdf 
+  
+  This is for form type: ${ RSPCAform }
+  
+  **Summary of defendant information:**
+  
+    Defendant|Input
+  -----------|----------
+  Name            | ${ def_name }
+  DOB             | ${ def_DOB }
+  Street          | ${ def_street }
+  Suburb          | ${ def_suburb }
+  State           | ${ def_state }
+  Postcode        | ${ def_postcode }
+  Email           | ${ def_email }
+  Phone Number    | ${ def_phone }
+  Drivers Licence | ${ def_licence }
+  
+  
+  **Summary of hearing details:**
+  
+     Registry|Details
+  -----------|----------  
+  Registry    | ${ RSPCA_registrieslist[RSPCAcourt].item('registry') } 
+  Address     | ${ RSPCA_registrieslist[RSPCAcourt].item('address') }
+  Email       | ${ RSPCA_registrieslist[RSPCAcourt].item('email') }
+  Phone       | ${ RSPCA_registrieslist[RSPCAcourt].item('phone') }
+  Website     | ${ RSPCA_registrieslist[RSPCAcourt].item('website') }
+  
+  
+  Need to add time/date still
+
+  Need to add summary of offence details
+  
+  Need to add attachment details (pdf/docx)
+
+buttons:
+  - Exit: exit
+    url: https://www.rspca.org.au/
+  - Restart: restart
+---
+#add attachment details
+---
+event: endpoints['ineligible']
+question: Not Eligible
+subquestion:
+  This disclaimer has not been accpeted or other possible issues tbc 
+buttons:
+  - Exit: exit
+    url: https://www.rspca.org.au/
+  - Restart: restart
+---
